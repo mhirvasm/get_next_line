@@ -1,0 +1,37 @@
+One 
+moment 
+Shadow 
+was 
+riding 
+the 
+World’s 
+Largest Carousel, holding on to his eagle-headed tiger,
+and then the red and white lights of the carousel stretched and shivered and went out, and he was
+falling through an ocean of stars, while the mechanical waltz was replaced by a pounding rhythmic
+roll and crash, as of cymbals or the breakers on the shores of a far ocean.
+The only light was starlight, but it illuminated everything with a cold clarity. Beneath him his mount
+stretched and padded, its warm fur under his left hand, its feathers beneath his right.
+“It’s a good ride, isn’t it?” The voice came from behind him, in his ears and in his mind.
+Shadow turned, slowly, streaming images of himself as he moved, frozen moments, each him
+captured in a fraction of a second, every tiny movement lasting for an infinite period. The images that
+reached his mind made no sense: it was like seeing the world through the multifaceted jeweled eyes
+of a dragonfly, but each facet saw something completely different, and he was unable to combine the
+things he was seeing, or thought he was seeing, into a whole that made any sense.
+He was looking at Mr. Nancy, an old black man with a pencil mustache, in his check sports jacket
+and his lemon-yellow gloves, riding a carousel lion as it rose and lowered, high in the air; and, at the
+same time, in the same place, he saw a jeweled spider as high as a horse, its eyes an emerald nebula,
+strutting, staring down at him; and simultaneously he was looking at an extraordinarily tall man with
+teak-colored skin and three sets of arms, wearing a flowing ostrich-feather headdress, his face
+painted with red stripes, riding an irritated golden lion, two of his six hands holding on tightly to the
+beast’s mane; and he was also seeing a young black boy, dressed in rags, his left foot all swollen and
+crawling with blackflies; and last of all, and behind all these things, Shadow was looking at a tiny
+brown spider, hiding under a withered ocher leaf.
+Shadow saw all these things, and he knew they were the same thing.
+“If you don’t close your mouth,” said the many things that were Mr. Nancy, “somethin’s goin’ to fly
+in there.”
+Shadow closed his mouth and swallowed, hard.
+There was a wooden hall on a hill, a mile or so from them. They were trotting toward the hall, their
+mounts’ hooves and feet padding noiselessly on the dry sand at the sea’s edge.
+Czernobog trotted up on his centaur. He tapped the human arm of his mount. “None of this is truly
+happening,” he said to Shadow 
+cc -Wall -Wextra -Werror -D BUFFER_SIZE=10000000 main.c get_next_line.c get_next_line_utils.c
