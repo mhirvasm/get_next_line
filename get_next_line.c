@@ -6,7 +6,7 @@
 /*   By: mhirvasm <mhirvasm@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 12:52:28 by mhirvasm          #+#    #+#             */
-/*   Updated: 2025/05/22 14:21:59 by mhirvasm         ###   ########.fr       */
+/*   Updated: 2025/05/22 14:38:57 by mhirvasm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ char	*extract_line(char *storage)
 		mem_size++;
 	line = malloc(mem_size + 1);
 	if (!line)
-		return (free(storage), NULL);
+		return (NULL);
 	strlcpy_gnl(line, storage, mem_size + 1);
 	return (line);
 }

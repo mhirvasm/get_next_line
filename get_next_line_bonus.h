@@ -6,12 +6,21 @@
 /*   By: mhirvasm <mhirvasm@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 12:10:54 by mhirvasm          #+#    #+#             */
-/*   Updated: 2025/05/22 14:25:30 by mhirvasm         ###   ########.fr       */
+/*   Updated: 2025/05/22 14:47:04 by mhirvasm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_BONUS_H
 # define GET_NEXT_LINE_BONUS_H
+
+
+# ifndef MAX_FD
+#  define MAX_FD 1024
+# endif
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE
+# endif
 
 # include <fcntl.h>
 # include <unistd.h>

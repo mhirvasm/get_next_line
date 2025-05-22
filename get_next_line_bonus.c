@@ -6,7 +6,7 @@
 /*   By: mhirvasm <mhirvasm@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 11:23:25 by mhirvasm          #+#    #+#             */
-/*   Updated: 2025/05/22 14:23:20 by mhirvasm         ###   ########.fr       */
+/*   Updated: 2025/05/22 14:44:09 by mhirvasm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*get_next_line(int fd)
 {
 	char			*line;
 	char			*buf;
-	static char		*storage[1024];
+	static char		*storage[MAX_FD];
 	int				bytes_read;
 
 	if (fd < 0 || fd >= 1024 || BUFFER_SIZE <= 0)

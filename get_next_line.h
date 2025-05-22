@@ -6,7 +6,7 @@
 /*   By: mhirvasm <mhirvasm@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 12:52:41 by mhirvasm          #+#    #+#             */
-/*   Updated: 2025/05/22 14:24:47 by mhirvasm         ###   ########.fr       */
+/*   Updated: 2025/05/22 14:45:26 by mhirvasm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@
 # include <unistd.h>
 # include <stdlib.h>
 
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE
+# endif
 // Main function 
 char			*get_next_line(int fd);
 
