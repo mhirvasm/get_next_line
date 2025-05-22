@@ -6,37 +6,41 @@
 /*   By: mhirvasm <mhirvasm@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 12:10:10 by mhirvasm          #+#    #+#             */
-/*   Updated: 2025/05/13 12:11:28 by mhirvasm         ###   ########.fr       */
+/*   Updated: 2025/05/20 15:25:54 by mhirvasm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
-
 
 char	*strjoin_gnl(char *s1, char *s2)
 {
 	size_t	total_len;
 	size_t	counter;
 	char	*result_str;
-	
+
 	if (!s1 && !s2)
 		return (NULL);
 	else if (!s1)
 		return (strdup_gnl(s2));
 	else if (!s2)
-		return (strdup_gnl(s1));		
+		return (strdup_gnl(s1));
 	total_len = (strlen_gnl(s1) + strlen_gnl(s2));
 	result_str = malloc(total_len + 1);
 	if (result_str == NULL)
-		return (NULL);
+		return (free(s1), NULL);
 	counter = 0;
-	while (*s1)
-		result_str[counter++] = *s1++;
+	while (s1[counter])
+	{
+		result_str[counter] = s1[counter];
+		counter++;
+	}
 	while (*s2)
 		result_str[counter++] = *s2++;
 	result_str[counter] = '\0';
+	free(s1);
 	return (result_str);
 }
+
 char	*strchr_gnl(const char *s, int c)
 {
 	if (!s)
@@ -44,8 +48,8 @@ char	*strchr_gnl(const char *s, int c)
 	while (*s)
 	{
 		if (*s == (unsigned char)c)
-			return((char *)s);
-	s++;
+			return ((char *)s);
+		s++;
 	}
 	if (*s == (unsigned char)c)
 		return ((char *)s);
@@ -55,9 +59,9 @@ char	*strchr_gnl(const char *s, int c)
 size_t	strlen_gnl(const char *s)
 {
 	size_t	counter;
-	
+
 	counter = 0;
-	while(*s)
+	while (*s)
 	{
 		s++;
 		counter++;

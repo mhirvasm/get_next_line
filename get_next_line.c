@@ -6,7 +6,7 @@
 /*   By: mhirvasm <mhirvasm@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 12:52:28 by mhirvasm          #+#    #+#             */
-/*   Updated: 2025/05/09 14:30:21 by mhirvasm         ###   ########.fr       */
+/*   Updated: 2025/05/20 15:23:14 by mhirvasm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,35 +15,36 @@
 char	*get_next_line(int fd)
 {
 	char			*line;
-	static	char	*leftover;
+	static char		*storage;
 	char			*buf;
 	int				bytes_read;
-	
+
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	buf = malloc(BUFFER_SIZE + 1);
 	if (!buf)
-		return (NULL);
+		return (free (storage), NULL);
 	bytes_read = 1;
-	while ((leftover == NULL || !strchr_gnl(leftover, '\n')) && bytes_read > 0)
+	while ((storage == NULL || !strchr_gnl(storage, '\n')) && bytes_read > 0)
 	{
 		bytes_read = read(fd, buf, BUFFER_SIZE);
 		if (bytes_read == -1)
-			return (free(buf), NULL);
-	buf[bytes_read] = '\0';
-	leftover = strjoin_gnl(leftover, buf);
+			return (free(buf), free(storage), NULL);
+		buf[bytes_read] = '\0';
+		storage = strjoin_gnl(storage, buf);
 	}
-	line = extract_line(leftover);
-	leftover = save_storage(leftover);
-	return (free(buf), line);
+	free(buf);
+	line = extract_line(storage);
+	storage = save_storage(storage);
+	return (line);
 }
 
-	char	*extract_line(char *storage)
+char	*extract_line(char *storage)
 {
 	size_t	mem_size;
 	char	*find_line;
 	char	*line;
-	
+
 	if (!storage || !*storage)
 		return (NULL);
 	find_line = storage;
@@ -57,17 +58,16 @@ char	*get_next_line(int fd)
 		mem_size++;
 	line = malloc(mem_size + 1);
 	if (!line)
-		return (NULL);
+		return (free(storage), NULL);
 	strlcpy_gnl(line, storage, mem_size + 1);
 	return (line);
-	
 }
 
-	char	*save_storage(char *storage)
+char	*save_storage(char *storage)
 {
 	char	*new_line_pos;
 	char	*new_storage;
-	
+
 	if (!storage)
 		return (NULL);
 	new_line_pos = strchr_gnl(storage, '\n');
@@ -79,5 +79,5 @@ char	*get_next_line(int fd)
 	new_line_pos++;
 	new_storage = strdup_gnl(new_line_pos);
 	free(storage);
-	return (new_storage);	
+	return (new_storage);
 }

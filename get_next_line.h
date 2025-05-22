@@ -6,17 +6,16 @@
 /*   By: mhirvasm <mhirvasm@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 12:52:41 by mhirvasm          #+#    #+#             */
-/*   Updated: 2025/05/09 15:07:15 by mhirvasm         ###   ########.fr       */
+/*   Updated: 2025/05/19 12:08:50 by mhirvasm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-#include <fcntl.h> //open()
-#include <unistd.h> // read() and close ()
-#include <stdlib.h> //TESTING DELETE THIS 
-#include <stdio.h> // printf()
+# include <fcntl.h>
+# include <unistd.h>
+# include <stdlib.h>
 
 // Main function 
 char			*get_next_line(int fd);
@@ -29,6 +28,5 @@ char			*extract_line(char *storage);
 char			*save_storage(char *storage);
 size_t			strlcpy_gnl(char *dst, const char *src, size_t size);
 char			*strdup_gnl(const char *s);
-
 
 #endif

@@ -33,5 +33,4 @@ Shadow closed his mouth and swallowed, hard.
 There was a wooden hall on a hill, a mile or so from them. They were trotting toward the hall, their
 mounts’ hooves and feet padding noiselessly on the dry sand at the sea’s edge.
 Czernobog trotted up on his centaur. He tapped the human arm of his mount. “None of this is truly
-happening,” he said to Shadow 
-cc -Wall -Wextra -Werror -D BUFFER_SIZE=10000000 main.c get_next_line.c get_next_line_utils.c
+happening,” he said to Shadow

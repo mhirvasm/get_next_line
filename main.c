@@ -6,12 +6,12 @@
 /*   By: mhirvasm <mhirvasm@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 12:54:11 by mhirvasm          #+#    #+#             */
-/*   Updated: 2025/05/08 17:17:34 by mhirvasm         ###   ########.fr       */
+/*   Updated: 2025/05/19 12:58:38 by mhirvasm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
+#include <stdio.h>
 
 int main(int argc, char **argv)
 {
@@ -37,6 +37,7 @@ int main(int argc, char **argv)
 	{
 		printf("%s", line);
 		free(line);
+		
 	}
 
 	close(fd);

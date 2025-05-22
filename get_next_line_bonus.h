@@ -6,16 +6,16 @@
 /*   By: mhirvasm <mhirvasm@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 12:10:54 by mhirvasm          #+#    #+#             */
-/*   Updated: 2025/05/13 12:11:48 by mhirvasm         ###   ########.fr       */
+/*   Updated: 2025/05/19 12:09:30 by mhirvasm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_BONUS_H
 # define GET_NEXT_LINE_BONUS_H
 
-#include <fcntl.h> //open()
-#include <unistd.h> // read() and close ()
-#include <stdlib.h> //TESTING DELETE THIS 
+# include <fcntl.h>
+# include <unistd.h>
+# include <stdlib.h>
 
 // Main function 
 char			*get_next_line(int fd);
