@@ -6,7 +6,7 @@
 /*   By: mhirvasm <mhirvasm@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 12:10:54 by mhirvasm          #+#    #+#             */
-/*   Updated: 2025/05/19 12:09:30 by mhirvasm         ###   ########.fr       */
+/*   Updated: 2025/05/22 14:25:30 by mhirvasm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@ char			*extract_line(char *storage);
 char			*save_storage(char *storage);
 size_t			strlcpy_gnl(char *dst, const char *src, size_t size);
 char			*strdup_gnl(const char *s);
+int				is_storage_empty(char *storage);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mhirvasm <mhirvasm@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 12:52:28 by mhirvasm          #+#    #+#             */
-/*   Updated: 2025/05/22 13:55:15 by mhirvasm         ###   ########.fr       */
+/*   Updated: 2025/05/22 14:21:59 by mhirvasm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 char	*get_next_line(int fd)
 {
 	static char		*storage;
-	char			*buf, *line;
+	char			*line;
+	char			*buf;
 	int				bytes_read;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
@@ -23,7 +24,8 @@ char	*get_next_line(int fd)
 	buf = malloc(BUFFER_SIZE + 1);
 	if (!buf)
 		return (free (storage), NULL);
-	while (((bytes_read = 1) && (!storage) || !strchr_gnl(storage, '\n')))
+	bytes_read = 1;
+	while (((!storage) || !strchr_gnl(storage, '\n')) && bytes_read > 0)
 	{
 		bytes_read = read(fd, buf, BUFFER_SIZE);
 		if (bytes_read == -1)
@@ -31,14 +33,12 @@ char	*get_next_line(int fd)
 		buf[bytes_read] = '\0';
 		storage = strjoin_gnl(storage, buf);
 	}
-	free(buf);
-	if (is_storage_empty(storage))
+	if (free(buf), is_storage_empty(storage))
 		return (free(storage), NULL);
 	line = extract_line(storage);
 	if (!line)
 		return (free(storage), NULL);
-	storage = save_storage(storage);
-	return (line);
+	return (storage = save_storage(storage), line);
 }
 
 char	*extract_line(char *storage)

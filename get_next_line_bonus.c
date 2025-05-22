@@ -6,7 +6,7 @@
 /*   By: mhirvasm <mhirvasm@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 11:23:25 by mhirvasm          #+#    #+#             */
-/*   Updated: 2025/05/22 13:55:15 by mhirvasm         ###   ########.fr       */
+/*   Updated: 2025/05/22 14:23:20 by mhirvasm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 char	*get_next_line(int fd)
 {
-	char			*line, *buf;
+	char			*line;
+	char			*buf;
 	static char		*storage[1024];
 	int				bytes_read;
 
@@ -23,7 +24,8 @@ char	*get_next_line(int fd)
 	buf = malloc(BUFFER_SIZE + 1);
 	if (!buf)
 		return (free(storage[fd]), NULL);
-	while (((bytes_read = 1) && !storage[fd]) || !strchr_gnl(storage[fd], '\n'))
+	bytes_read = 1;
+	while (((!storage[fd]) || !strchr_gnl(storage[fd], '\n')) && bytes_read > 0)
 	{
 		bytes_read = read(fd, buf, BUFFER_SIZE);
 		if (bytes_read == -1)
@@ -31,8 +33,7 @@ char	*get_next_line(int fd)
 		buf[bytes_read] = '\0';
 		storage[fd] = strjoin_gnl(storage[fd], buf);
 	}
-	free (buf);
-	if (!storage[fd] || *storage[fd] == '\0')
+	if (free(buf), is_storage_empty(storage[fd]))
 		return (free(storage[fd]), storage[fd] = NULL, NULL);
 	line = extract_line(storage[fd]);
 	if (!line)
@@ -81,4 +82,11 @@ char	*save_storage(char *storage)
 	new_storage = strdup_gnl(new_line_pos);
 	free(storage);
 	return (new_storage);
+}
+
+int	is_storage_empty(char *storage)
+{
+	if (!storage || *storage == '\0')
+		return (1);
+	return (0);
 }
