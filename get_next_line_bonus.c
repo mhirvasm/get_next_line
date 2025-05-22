@@ -6,7 +6,7 @@
 /*   By: mhirvasm <mhirvasm@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 11:23:25 by mhirvasm          #+#    #+#             */
-/*   Updated: 2025/05/20 15:57:48 by mhirvasm         ###   ########.fr       */
+/*   Updated: 2025/05/22 13:55:15 by mhirvasm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 char	*get_next_line(int fd)
 {
-	char			*line;
+	char			*line, *buf;
 	static char		*storage[1024];
-	char			*buf;
 	int				bytes_read;
 
 	if (fd < 0 || fd >= 1024 || BUFFER_SIZE <= 0)
@@ -24,9 +23,7 @@ char	*get_next_line(int fd)
 	buf = malloc(BUFFER_SIZE + 1);
 	if (!buf)
 		return (free(storage[fd]), NULL);
-	bytes_read = 1;
-	while ((storage[fd] == NULL || !strchr_gnl(storage[fd], '\n'))
-		&& bytes_read > 0)
+	while (((bytes_read = 1) && !storage[fd]) || !strchr_gnl(storage[fd], '\n'))
 	{
 		bytes_read = read(fd, buf, BUFFER_SIZE);
 		if (bytes_read == -1)
@@ -35,9 +32,12 @@ char	*get_next_line(int fd)
 		storage[fd] = strjoin_gnl(storage[fd], buf);
 	}
 	free (buf);
+	if (!storage[fd] || *storage[fd] == '\0')
+		return (free(storage[fd]), storage[fd] = NULL, NULL);
 	line = extract_line(storage[fd]);
-	storage[fd] = save_storage(storage[fd]);
-	return (line);
+	if (!line)
+		return (free(storage[fd]), storage[fd] = NULL, NULL);
+	return (storage[fd] = save_storage(storage[fd]), line);
 }
 
 char	*extract_line(char *storage)
@@ -59,7 +59,7 @@ char	*extract_line(char *storage)
 		mem_size++;
 	line = malloc(mem_size + 1);
 	if (!line)
-		return (free(storage), NULL);
+		return (NULL);
 	strlcpy_gnl(line, storage, mem_size + 1);
 	return (line);
 }
@@ -72,7 +72,7 @@ char	*save_storage(char *storage)
 	if (!storage)
 		return (NULL);
 	new_line_pos = strchr_gnl(storage, '\n');
-	if (!new_line_pos)
+	if (!new_line_pos || !*(new_line_pos + 1))
 	{
 		free(storage);
 		return (NULL);
